@@ -33,7 +33,7 @@ function showNotes() {
         <div class="card-body">
           <h5 class="card-title">Note ${index + 1}</h5>
           <p class="card-text">${element}</p>
-          <button onclick="deleteNode(this.id)" class="btn btn-primary" id=${index}>Delete Node</button>
+          <button onclick="deleteNode(this.id)" class="btn btn-primary" id="${index}">Delete Node</button>
         </div>                
     </div>
         `;
@@ -62,9 +62,10 @@ function deleteNode(index) {
 }
 // logic for search 
 let search = document.getElementById("searchTxt");
+
 search.addEventListener("input", function () {
 
-    let inputval = search.value.toLowerCase();
+    let inputval = search.value;
     let ourcard = document.getElementsByClassName("notecard");
     Array.from(ourcard).forEach(element => {
         let cardText = element.getElementsByTagName("p")[0].innerText;
