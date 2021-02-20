@@ -63,8 +63,8 @@ function deleteNode(index) {
 // logic for search 
 let search = document.getElementById("searchTxt");
 
-search.addEventListener("input", function () {
-
+let clickbtn=document.getElementById("buttonc");
+clickbtn.addEventListener("click", function () {
     let inputval = search.value;
     let ourcard = document.getElementsByClassName("notecard");
     Array.from(ourcard).forEach(element => {
@@ -76,4 +76,11 @@ search.addEventListener("input", function () {
             element.style.display = "none";
         }
     })
+})
+//for displaying all the nodes when we have backspaced all the input data in search option without reloading the page
+search.addEventListener("input",function(){
+    if(search.value == "")
+{
+    showNotes();
+}
 })
