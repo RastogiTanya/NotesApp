@@ -33,7 +33,7 @@ function showNotes() {
         <div class="card-body">
           <h5 class="card-title">Note ${index + 1}</h5>
           <p class="card-text">${element}</p>
-          <button class="btn btn-primary">Delete Node</button>
+          <button onclick="deleteNode(this.id)" class="btn btn-primary" id=${index}>Delete Node</button>
         </div>                
     </div>
         `;
@@ -46,4 +46,17 @@ function showNotes() {
         notesElem.innerHTML = `No notes here.`;
     }
 }
-//finction to delete the nodes
+//function to delete the nodes
+function deleteNode(index){
+    let notes = localStorage.getItem("notes");
+    if (notes == null) {
+        notesObj = [];
+    }
+    else {
+        notesObj = JSON.parse(notes);
+    }
+    notesObj.splice(index,1); //first argument from where second argument how many
+    localStorage.setItem("notes", JSON.stringify(notesObj)); //updating local storage
+    showNotes();
+
+}
