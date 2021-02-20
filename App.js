@@ -29,7 +29,7 @@ function showNotes() {
     //Adding the card
     notesObj.forEach(function (element, index) {
         html += `
-        <div class="mx-2 my-2 card " style="width: 18rem;">
+        <div class=" notecard mx-2 my-2 card " style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Note ${index + 1}</h5>
           <p class="card-text">${element}</p>
@@ -47,7 +47,7 @@ function showNotes() {
     }
 }
 //function to delete the nodes
-function deleteNode(index){
+function deleteNode(index) {
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -55,8 +55,24 @@ function deleteNode(index){
     else {
         notesObj = JSON.parse(notes);
     }
-    notesObj.splice(index,1); //first argument from where second argument how many
+    notesObj.splice(index, 1); //first argument from where second argument how many
     localStorage.setItem("notes", JSON.stringify(notesObj)); //updating local storage
     showNotes();
 
 }
+// logic for search 
+let search = document.getElementById("searchTxt");
+search.addEventListener("input", function () {
+
+    let inputval = search.value.toLowerCase();
+    let ourcard = document.getElementsByClassName("notecard");
+    Array.from(ourcard).forEach(element => {
+        let cardText = element.getElementsByTagName("p")[0].innerText;
+        if (cardText.includes(inputval)) {
+            element.style.display = "block";
+        }
+        else{
+            element.style.display = "none";
+        }
+    })
+})
