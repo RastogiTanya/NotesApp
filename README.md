@@ -6,3 +6,4 @@ When you complete a task, you can delete it from your list.
 This gives you a sense of progress and achievement.
 If you feel a sense of achievement, it spurs you on and motivates you to keep moving
 forward.
+You can add, delete and search notes here.
